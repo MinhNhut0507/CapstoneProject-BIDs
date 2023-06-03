@@ -10,8 +10,11 @@
             public readonly static string INVALID_REQUEST = "Request is not valid";
             public readonly static string ACCOUNT_NAME_IS_EXITED = "Account name is exited";
             public readonly static string EMAIL_IS_EXITED = "Email is exited";
+            public readonly static string WRONG_EMAIL_FORMAT = "Wrong email format";
             public readonly static string CCCD_NUMBER_IS_EXITED = "CCCD number is exited";
+            public readonly static string WRONG_CCCD_NUMBER_FORMAT = "Wrong cccd number format";
             public readonly static string PHONE_IS_EXITED = "Phone is exited";
+            public readonly static string WRONG_PHONE_FORMAT = "Wrong phone format";
         }
         #endregion
 
