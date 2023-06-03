@@ -52,48 +52,67 @@ namespace Business_Logic.Modules.UserModule
             return user;
         }
 
-        public async Task<Guid?> AddNewUser(CreateUserRequest UserRequest)
+        public async Task<Guid?> AddNewUser(CreateUserRequest userRequest)
         {
 
-            ValidationResult result = new CreateUserRequestValidator().Validate(UserRequest);
+            ValidationResult result = new CreateUserRequestValidator().Validate(userRequest);
             if (!result.IsValid)
             {
                 throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
             }
 
-            if(_UserRepository.GetFirstOrDefaultAsync(x => x.AccountName == UserRequest.AccountName) != null)
+            if(_UserRepository.GetFirstOrDefaultAsync(x => x.AccountName == userRequest.AccountName) != null)
             {
                 throw new Exception(ErrorMessage.CommonError.ACCOUNT_NAME_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Email == UserRequest.Email) != null)
+            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email) != null)
             {
                 throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Phone == UserRequest.Phone) != null)
+            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone) != null)
             {
                 throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Cccdnumber == UserRequest.Cccdnumber) != null)
+            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Cccdnumber == userRequest.Cccdnumber) != null)
             {
                 throw new Exception(ErrorMessage.CommonError.CCCD_NUMBER_IS_EXITED);
+            }
+
+            if (!userRequest.Email.Contains("@"))
+            {
+                throw new Exception(ErrorMessage.CommonError.WRONG_EMAIL_FORMAT);
+            }
+            if ((!userRequest.Phone.StartsWith("09") 
+                && !userRequest.Phone.StartsWith("08")
+                && !userRequest.Phone.StartsWith("07")
+                && !userRequest.Phone.StartsWith("05")
+                && !userRequest.Phone.StartsWith("03"))
+                || userRequest.Phone.Length != 10)
+            {
+                throw new Exception(ErrorMessage.CommonError.WRONG_PHONE_FORMAT);
+            }
+            if (userRequest.Cccdnumber.Length != 12
+                || !userRequest.Cccdnumber.StartsWith("0"))
+            {
+                throw new Exception(ErrorMessage.CommonError.WRONG_CCCD_NUMBER_FORMAT);
             }
 
             var newUser = new User();
 
             newUser.UserId = Guid.NewGuid();
-            newUser.AccountName = UserRequest.AccountName;
-            newUser.UserName = UserRequest.UserName;
-            newUser.Email = UserRequest.Email;
-            newUser.Password = UserRequest.Password;
-            newUser.Address = UserRequest.Address;
-            newUser.Phone = UserRequest.Phone;
-            newUser.DateOfBirth = UserRequest.DateOfBirth;
-            newUser.Cccdnumber = UserRequest.Cccdnumber;
-            newUser.CccdfrontImage = UserRequest.CccdfrontImage;
-            newUser.CccdbackImage = UserRequest.CccdbackImage;
+            newUser.AccountName = userRequest.AccountName;
+            newUser.UserName = userRequest.UserName;
+            newUser.Email = userRequest.Email;
+            newUser.Password = userRequest.Password;
+            newUser.Address = userRequest.Address;
+            newUser.Phone = userRequest.Phone;
+            newUser.DateOfBirth = userRequest.DateOfBirth;
+            newUser.Cccdnumber = userRequest.Cccdnumber;
+            newUser.CccdfrontImage = userRequest.CccdfrontImage;
+            newUser.CccdbackImage = userRequest.CccdbackImage;
             newUser.CreateDate = DateTime.Now;
             newUser.UpdateDate = DateTime.Now;
-            newUser.Notification = null;            
+            //newUser.Notification = null;            
             newUser.Status = false;
 
             await _UserRepository.AddAsync(newUser);
@@ -115,6 +134,29 @@ namespace Business_Logic.Modules.UserModule
                 if (!result.IsValid)
                 {
                     throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
+                }
+
+                if (_UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email) != null)
+                {
+                    throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
+                }
+                if (_UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone) != null)
+                {
+                    throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
+                }
+
+                if (!userRequest.Email.Contains("@"))
+                {
+                    throw new Exception(ErrorMessage.CommonError.WRONG_EMAIL_FORMAT);
+                }
+                if ((!userRequest.Phone.StartsWith("09")
+                    && !userRequest.Phone.StartsWith("08")
+                    && !userRequest.Phone.StartsWith("07")
+                    && !userRequest.Phone.StartsWith("05")
+                    && !userRequest.Phone.StartsWith("03"))
+                    || userRequest.Phone.Length != 10)
+                {
+                    throw new Exception(ErrorMessage.CommonError.WRONG_PHONE_FORMAT);
                 }
 
                 userUpdate.UserName = userRequest.UserName;

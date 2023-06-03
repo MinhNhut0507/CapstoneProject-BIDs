@@ -45,12 +45,12 @@ namespace Business_Logic.Modules.UserModule.Request
             RuleFor(x => x.Password).NotEmpty().NotNull();
             RuleFor(x => x.Address).NotEmpty().NotNull();
             RuleFor(x => x.Phone).NotEmpty().NotNull();
-            RuleFor(x => x.DateOfBirth).NotEmpty().NotNull();
-            RuleFor(x => x.Cccdnumber).NotEmpty().NotNull();
-            RuleFor(x => x.CccdfrontImage).NotEmpty().NotNull();
-            RuleFor(x => x.CccdbackImage).NotEmpty().NotNull();
-            RuleFor(x => x.UpdateDate).NotEmpty().NotNull();
-            RuleFor(x => x.CreateDate).NotEmpty().NotNull();
+            //RuleFor(x => x.DateOfBirth).NotEmpty().NotNull();
+            //RuleFor(x => x.Cccdnumber).NotEmpty().NotNull();
+            //RuleFor(x => x.CccdfrontImage).NotEmpty().NotNull();
+            //RuleFor(x => x.CccdbackImage).NotEmpty().NotNull();
+            //RuleFor(x => x.UpdateDate).NotEmpty().NotNull();
+            //RuleFor(x => x.CreateDate).NotEmpty().NotNull();
             RuleFor(x => x.Notification).NotEmpty().NotNull();
             //RuleFor(x => x.IsBlocked).NotEmpty().NotNull();
         }
