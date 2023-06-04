@@ -1,3 +1,5 @@
+using Business_Logic.Modules.StaffModule;
+using Business_Logic.Modules.StaffModule.Interface;
 using Business_Logic.Modules.UserModule;
 using Business_Logic.Modules.UserModule.Interface;
 using Data_Access.Entities;
@@ -33,7 +35,10 @@ namespace BIDs_API
             //User Module
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
-            
+            //Staff Module
+            services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddScoped<IStaffService, StaffService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

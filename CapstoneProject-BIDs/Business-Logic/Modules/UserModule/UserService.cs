@@ -165,7 +165,7 @@ namespace Business_Logic.Modules.UserModule
                 userUpdate.Address = userRequest.Address;
                 userUpdate.Phone = userRequest.Phone;
                 userUpdate.Notification = userRequest.Notification;
-                userUpdate.Status = userRequest.Status;
+                //userUpdate.Status = userRequest.Status;
                 userUpdate.UpdateDate = DateTime.Now;
 
                 await _UserRepository.UpdateAsync(userUpdate);

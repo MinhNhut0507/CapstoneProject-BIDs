@@ -1,14 +1,17 @@
 ﻿using FluentValidation;
 using System;
 
-namespace Business_Logic.Modules.UserModule.Request
+namespace Business_Logic.Modules.StaffModule.Request
 {
-    public class UpdateUserRequest
+    public class UpdateStaffRequest
     {
-        public Guid UserId { get; set; }
+        public Guid StaffId { get; set; }
+
+        public Guid RoleId { get; set; }
+
         public string AccountName { get; set; }
 
-        public string UserName { get; set; }
+        public string StaffName { get; set; }
 
         public string Email { get; set; }
 
@@ -20,39 +23,31 @@ namespace Business_Logic.Modules.UserModule.Request
 
         public DateTime DateOfBirth { get; set; }
 
-        public string Cccdnumber { get; set; }
-
-        public byte[] CccdfrontImage { get; set; }
-
-        public byte[] CccdbackImage { get; set; }
+        public DateTime CreateDate { get; set; }
 
         public DateTime UpdateDate { get; set; }
-
-        public DateTime CreateDate { get; set; }
 
         public string Notification { get; set; }
 
         public bool Status { get; set; }
     }
-    public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
+    public class UpdateStaffRequestValidator : AbstractValidator<UpdateStaffRequest>
     {
-        public UpdateUserRequestValidator()
+        public UpdateStaffRequestValidator()
         {
-            RuleFor(x => x.UserId).NotEmpty().NotNull();
+            RuleFor(x => x.StaffId).NotEmpty().NotNull();
+            RuleFor(x => x.RoleId).NotEmpty().NotNull();
             RuleFor(x => x.AccountName).NotEmpty().NotNull();
-            RuleFor(x => x.UserName).NotEmpty().NotNull();
+            RuleFor(x => x.StaffName).NotEmpty().NotNull();
             RuleFor(x => x.Email).NotEmpty().NotNull();
             RuleFor(x => x.Password).NotEmpty().NotNull();
             RuleFor(x => x.Address).NotEmpty().NotNull();
             RuleFor(x => x.Phone).NotEmpty().NotNull();
             //RuleFor(x => x.DateOfBirth).NotEmpty().NotNull();
-            //RuleFor(x => x.Cccdnumber).NotEmpty().NotNull();
-            //RuleFor(x => x.CccdfrontImage).NotEmpty().NotNull();
-            //RuleFor(x => x.CccdbackImage).NotEmpty().NotNull();
             //RuleFor(x => x.UpdateDate).NotEmpty().NotNull();
             //RuleFor(x => x.CreateDate).NotEmpty().NotNull();
             RuleFor(x => x.Notification).NotEmpty().NotNull();
-            //RuleFor(x => x.Status).NotEmpty().NotNull();
+            RuleFor(x => x.Status).NotEmpty().NotNull();
         }
     }
 }

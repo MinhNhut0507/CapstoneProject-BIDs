@@ -23,6 +23,15 @@
         {
             public readonly static string USER_NOT_FOUND = "User is not existed";
             public readonly static string USER_EXISTED = "User is existed";
+            public readonly static string ACCOUNT_CREATE_NOT_FOUND = "Account create is not existed";
+        }
+        #endregion
+
+        #region Staff error message
+        public static class StaffError
+        {
+            public readonly static string STAFF_NOT_FOUND = "Staff is not existed";
+            public readonly static string STAFF_EXISTED = "Staff is existed";
         }
         #endregion
     }

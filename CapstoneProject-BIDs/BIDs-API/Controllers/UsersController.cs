@@ -46,7 +46,7 @@ namespace BIDs_API.Controllers
         }
 
         // GET api/<ValuesController>/abc
-        [HttpGet("{name}")]
+        [HttpGet("by_name/{name}")]
         public async Task<ActionResult<User>> GetUserByName([FromRoute] string name)
         {
             var user = await _userService.GetUserByName(name);
