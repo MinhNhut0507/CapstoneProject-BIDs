@@ -61,19 +61,23 @@ namespace Business_Logic.Modules.UserModule
                 throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
             }
 
-            if(_UserRepository.GetFirstOrDefaultAsync(x => x.AccountName == userRequest.AccountName) != null)
+            User userCheckAccountName = _UserRepository.GetFirstOrDefaultAsync(x => x.AccountName == userRequest.AccountName).Result;
+            if (userCheckAccountName != null)
             {
                 throw new Exception(ErrorMessage.CommonError.ACCOUNT_NAME_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email) != null)
+            User userCheckEmail = _UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email).Result;
+            if (userCheckEmail != null)
             {
                 throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone) != null)
+            User userCheckPhone = _UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone).Result;
+            if (userCheckPhone != null)
             {
                 throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
             }
-            if (_UserRepository.GetFirstOrDefaultAsync(x => x.Cccdnumber == userRequest.Cccdnumber) != null)
+            User userCheckCCCDNumber = _UserRepository.GetFirstOrDefaultAsync(x => x.Cccdnumber == userRequest.Cccdnumber).Result;
+            if (userCheckCCCDNumber != null)
             {
                 throw new Exception(ErrorMessage.CommonError.CCCD_NUMBER_IS_EXITED);
             }
@@ -136,11 +140,13 @@ namespace Business_Logic.Modules.UserModule
                     throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
                 }
 
-                if (_UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email) != null)
+                User userCheckEmail = _UserRepository.GetFirstOrDefaultAsync(x => x.Email == userRequest.Email).Result;
+                if (userCheckEmail != null)
                 {
                     throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
                 }
-                if (_UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone) != null)
+                User userCheckPhone = _UserRepository.GetFirstOrDefaultAsync(x => x.Phone == userRequest.Phone).Result;
+                if (userCheckPhone != null)
                 {
                     throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
                 }

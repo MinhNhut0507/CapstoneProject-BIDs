@@ -18,21 +18,21 @@ namespace Business_Logic.Modules.UserModule.Request
 
         public string Phone { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        //public DateTime DateOfBirth { get; set; }
 
-        public string Cccdnumber { get; set; }
+        //public string Cccdnumber { get; set; }
 
-        public byte[] CccdfrontImage { get; set; }
+        //public byte[] CccdfrontImage { get; set; }
 
-        public byte[] CccdbackImage { get; set; }
+        //public byte[] CccdbackImage { get; set; }
 
-        public DateTime UpdateDate { get; set; }
+        //public DateTime UpdateDate { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        //public DateTime CreateDate { get; set; }
 
         public string Notification { get; set; }
 
-        public bool Status { get; set; }
+        //public bool Status { get; set; }
     }
     public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
     {

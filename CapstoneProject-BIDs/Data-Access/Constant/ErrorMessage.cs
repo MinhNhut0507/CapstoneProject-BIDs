@@ -34,5 +34,20 @@
             public readonly static string STAFF_EXISTED = "Staff is existed";
         }
         #endregion
+
+        #region Role error message
+        public static class RoleError
+        {
+            public readonly static string ROLE_NOT_FOUND = "Role is not existed";
+            public readonly static string ROLE_EXISTED = "Role is existed";
+        }
+        #endregion
+
+        #region Login error message
+        public static class LoginError
+        {
+            public readonly static string WRONG_ACCOUNT_NAME_OR_PASSWORD = "Wrong account name or password";
+        }
+        #endregion
     }
 }

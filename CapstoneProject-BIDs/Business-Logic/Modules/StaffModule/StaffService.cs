@@ -64,15 +64,18 @@ namespace Business_Logic.Modules.StaffModule
                 throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
             }
 
-            if(_StaffRepository.GetFirstOrDefaultAsync(x => x.AccountName == StaffRequest.AccountName) != null)
+            Staff staffCheckAccountName = _StaffRepository.GetFirstOrDefaultAsync(x => x.AccountName == StaffRequest.AccountName).Result;
+            if (staffCheckAccountName != null)
             {
                 throw new Exception(ErrorMessage.CommonError.ACCOUNT_NAME_IS_EXITED);
             }
-            if (_StaffRepository.GetFirstOrDefaultAsync(x => x.Email == StaffRequest.Email) != null)
+            Staff staffCheckEmail = _StaffRepository.GetFirstOrDefaultAsync(x => x.Email == StaffRequest.Email).Result;
+            if (staffCheckEmail != null)
             {
                 throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
             }
-            if (_StaffRepository.GetFirstOrDefaultAsync(x => x.Phone == StaffRequest.Phone) != null)
+            Staff staffTestPhone = _StaffRepository.GetFirstOrDefaultAsync(x => x.Phone == StaffRequest.Phone).Result;
+            if (staffTestPhone != null)
             {
                 throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
             }
@@ -128,14 +131,17 @@ namespace Business_Logic.Modules.StaffModule
                     throw new Exception(ErrorMessage.CommonError.INVALID_REQUEST);
                 }
 
-                if (_StaffRepository.GetFirstOrDefaultAsync(x => x.Email == StaffRequest.Email) != null)
+                Staff staffCheckEmail = _StaffRepository.GetFirstOrDefaultAsync(x => x.Email == StaffRequest.Email).Result;
+                if (staffCheckEmail != null)
                 {
                     throw new Exception(ErrorMessage.CommonError.EMAIL_IS_EXITED);
                 }
-                if (_StaffRepository.GetFirstOrDefaultAsync(x => x.Phone == StaffRequest.Phone) != null)
+                Staff staffCheckPhone = _StaffRepository.GetFirstOrDefaultAsync(x => x.Phone == StaffRequest.Phone).Result;
+                if (staffCheckPhone != null)
                 {
                     throw new Exception(ErrorMessage.CommonError.PHONE_IS_EXITED);
                 }
+
 
                 if (!StaffRequest.Email.Contains("@"))
                 {

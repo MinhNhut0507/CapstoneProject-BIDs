@@ -1,3 +1,7 @@
+using Business_Logic.Modules.LoginModule;
+using Business_Logic.Modules.LoginModule.InterFace;
+using Business_Logic.Modules.RoleModule;
+using Business_Logic.Modules.RoleModule.Interface;
 using Business_Logic.Modules.StaffModule;
 using Business_Logic.Modules.StaffModule.Interface;
 using Business_Logic.Modules.UserModule;
@@ -38,7 +42,11 @@ namespace BIDs_API
             //Staff Module
             services.AddScoped<IStaffRepository, StaffRepository>();
             services.AddScoped<IStaffService, StaffService>();
-
+            //Role Module
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleService, RoleService>();
+            //Login Module
+            services.AddScoped<ILoginService, LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
